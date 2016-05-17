@@ -40,11 +40,11 @@
                                 value="${p.id_persona}"/>" class="btn btn-sm btn-info">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a href="PersonaControl?action=delete&id=<c:out 
-                                value="${p.id_persona}"/>" class="btn btn-danger btn-sm">                                    
+                            <a class="btn btn-warning btn-sm" href="PersonaControl?action=delete&id=<c:out 
+                                value="${p.id_persona}"/>" onclick="return confirm('Estas seguro de eliminar?')" 
+                               >                                    
                                    <span class="glyphicon glyphicon-trash"></span>
-                            </a>
-                            <button onclick="del(<c:out value="${p.id_persona}"/>)" class="eliminar" value="">Eliminar</button>
+                            </a>                            
                         </td>
                     </tr>    
                 </c:forEach>
@@ -52,16 +52,6 @@
         </table>
         <a href="PersonaControl?action=insert" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus-sign"></span> Agregar
-        </a>
-        
-        <script>
-            function del(id){
-                var d = confirm("Seguro? "+id);
-                if(d===true){
-                    
-                               alert("se elimino");
-                }               
-            }
-        </script>
+        </a>        
     </body>
 </html>

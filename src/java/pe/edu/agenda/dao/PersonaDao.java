@@ -30,7 +30,7 @@ public class PersonaDao {
         List<PersonaTo> lista = new ArrayList<>();
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from persona");
+            ResultSet rs = st.executeQuery("select * from Persona");
             while (rs.next()) {
                 PersonaTo to = new PersonaTo();
                 to.setId_persona(rs.getInt("id_persona"));
@@ -49,7 +49,7 @@ public class PersonaDao {
     public void crearPersona(PersonaTo to){
         try {
             PreparedStatement ps;
-            ps = con.prepareStatement("insert into persona (nombres, apellidos, celular, "
+            ps = con.prepareStatement("insert into Persona (nombres, apellidos, celular, "
                     + "email, telefono, dni, direccion, fecha) values (?,?,?,?,?,?,?,?)");
             ps.setString(1, to.getNombres());
             ps.setString(2, to.getApellidos());
@@ -68,7 +68,7 @@ public class PersonaDao {
     public PersonaTo buscarPersona(int id) {
         PersonaTo per = new PersonaTo();
         try {
-            PreparedStatement ps = con.prepareStatement("select * from persona where id_persona=?");
+            PreparedStatement ps = con.prepareStatement("select * from Persona where id_persona=?");
             ps.setInt(1, id);            
             ResultSet rs = ps.executeQuery();
  
@@ -88,7 +88,7 @@ public class PersonaDao {
     public void actualizarPersona(PersonaTo to){
         try {
             PreparedStatement ps;
-            ps = con.prepareStatement("update persona set nombres=?, apellidos=?, celular=?, "
+            ps = con.prepareStatement("update Persona set nombres=?, apellidos=?, celular=?, "
                     + "email=?, telefono=?, dni=?, direccion=?, fecha=? where id_persona=?");//probar sin fecha
             ps.setInt(9, to.getId_persona());
             ps.setString(1, to.getNombres());
@@ -108,7 +108,7 @@ public class PersonaDao {
         
     public void eliminarPersona(int id){
         try {
-            PreparedStatement ps = con.prepareStatement("delete from persona where id_persona=?");
+            PreparedStatement ps = con.prepareStatement("delete from Persona where id_persona=?");
             ps.setInt(1, id);
             ps.executeUpdate();
             System.out.println("Objeto eliminado");
